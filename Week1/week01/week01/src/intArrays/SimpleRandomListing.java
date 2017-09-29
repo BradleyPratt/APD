@@ -23,19 +23,18 @@ public class SimpleRandomListing extends RandomListing
      */
     protected void randomise() {
         int[] copy = new int[getArray().length];
-        int index = 0;
-        int randomIndex;
         // used to indicate if elements have been used
         boolean[] used = new boolean[getArray().length];
         Arrays.fill(used,false);
-        for (; index < getArray().length; index++) {
+        for (int index = 0; index < getArray().length; index++) {
+            int randomIndex;
         	do {
                 randomIndex = getRandomIndex();
             } while (used[randomIndex]);
             copy[index] = array[randomIndex];
             used[randomIndex] = true;
         }
-        for (index = 0; index < getArray().length;) {
+        for (int index = 0; index < getArray().length; index++) {
             getArray()[index] = copy[index];
         }
     }
