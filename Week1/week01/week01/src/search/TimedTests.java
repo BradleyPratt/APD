@@ -48,6 +48,12 @@ public class TimedTests {
 		assertEquals(n,k+searcher.findKthElement(generator.getArray(),k));
 	}
 	
+	/*public void findKthElement(SimpleSearchTimer simpleSearchTimer, int i, int j) {
+		SimpleSearchTimer generator = new SimpleSearchTimer();
+		assertEquals();
+	}*/
+
+	
 	@Test
 	public void smallTest() throws IndexingError {
     	assertEquals(simpleTimer.findKthElement(smallArray, 2),4);
