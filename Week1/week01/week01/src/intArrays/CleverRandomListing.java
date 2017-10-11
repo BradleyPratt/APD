@@ -1,7 +1,6 @@
 package intArrays;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 public class CleverRandomListing extends RandomListing {
 	
@@ -10,15 +9,14 @@ public class CleverRandomListing extends RandomListing {
 	}
 	
 	protected void randomise() {
-		Integer[] copy = new Integer[getArray().length]; // Creates a new Array from the SortedListing class
-		for (int index = 0; index < copy.length; index++) {
-			copy[index] = index; // Builds the array until it meets the specified length.
-		}
-		Collections.shuffle(Arrays.asList(copy)); // Shuffles the array using a method from java.util.collections
 		
-		for (int index = 0; index < copy.length; index++) { 
-			getArray()[index] = copy[index]; // Matches the arrays
-		} 
+		for (int index = 0; index < getArray().length; index++) {
+			int randomArray = getRandomIndex(); // Uses the getRandomIndex method to randomise the array index
+			
+			int newInt = getArray()[randomArray];
+			getArray()[randomArray] = getArray()[index]; // Changes the grabbed array to randomise its index
+			getArray()[index] = newInt; // Builds the array using its new index
+		}
 	}
 	
     public static void main(String[] args) {
