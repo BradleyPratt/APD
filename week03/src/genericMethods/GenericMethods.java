@@ -25,9 +25,11 @@ public class GenericMethods {
 		array[index2] = objectOne; //Uses the defined second position and places "objectOne" there
 	}
 	
-    public static void main(String[] args) {
+    public static String main() {
     	Integer[] arrayTest = {1,2,3,4,5};
-    	swap(arrayTest, 1, 4); //Chooses which objects from the defined index location to swap
+    	swap(arrayTest, 1, 2); //Chooses which objects from the defined index location to swap
     	System.out.println(Arrays.toString(arrayTest));
+    	
+    	return Arrays.toString(arrayTest);
     }
 }

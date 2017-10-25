@@ -44,4 +44,9 @@ public class GenericMethodsTest {
 	public void testNotEqualNull2() {
 		assertEquals(false,GenericMethods.equals("Hugh", null));
 	}
+	
+	@Test
+	public void testSwap() {
+		assertEquals("[1, 3, 2, 4, 5]",GenericMethods.main());
+	}
 }
