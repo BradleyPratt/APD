@@ -18,6 +18,12 @@ public class GenericMethods {
 		}
 	}
 	
+	/**
+	 * Swaps the specified elements within the array
+	 * @param array the array which is passed into the method
+	 * @param index1 the index which needs to be swapped with index2
+	 * @param index2
+	 */
 	public static <T> void swap(T[] array, int index1, int index2) {
 		T objectOne = array[index1];
 		T objectTwo = array[index2];
@@ -26,6 +32,13 @@ public class GenericMethods {
 		array[index2] = objectOne; //Uses the defined second position and places "objectOne" there
 	}
 	
+	/**
+	 * The purpose of max is to find the largest element in between index1 and index2.
+	 * @param array is the array that is passed in
+	 * @param index1 is the first index, which elements before it may be ignored
+	 * @param index2 is the second index location, which elements after it may be ignored
+	 * @return returns the largest element
+	 */
     public static <T> String max(String[] array, int index1, int index2) {
     	int index = 0;
     	int elementLength = array[0].length();
@@ -41,13 +54,14 @@ public class GenericMethods {
     	return array[index];
     }
 	
-    public static String main() {
+    public static void main(String[] args) {
     	Integer[] arrayTest = {1,2,3,4,5};
     	swap(arrayTest, 1, 2); //Chooses which objects from the defined index location to swap
     	System.out.println(Arrays.toString(arrayTest));
     	String[] names = {"Hugh", "Andrew", "Ebrahim","Diane","Paula", "Simon"};
-    	System.out.println(max(names,1,4));
-    	return Arrays.toString(arrayTest);
+    	//names = max(names, 1, 4);
+    	//System.out.println(Arrays.toString(names));
+    	//return Arrays.toString(arrayTest);
     }
     
 }

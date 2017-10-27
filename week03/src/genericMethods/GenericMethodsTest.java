@@ -47,6 +47,17 @@ public class GenericMethodsTest {
 	
 	@Test
 	public void testSwap() {
-		assertEquals("[1, 3, 2, 4, 5]",GenericMethods.main());
+		Integer[] arrayTest = {1,2,3,4,5};
+		GenericMethods.swap(arrayTest, 1, 2);
+		Integer[] expected = {1,3,2,4,5};
+		assertArrayEquals(expected, arrayTest);
+	}
+	
+	@Test
+	public void testMax() {
+		String[] nameTest = {"Hugh", "Andrew", "Ebrahim","Diane","Paula", "Simon"};
+		GenericMethods.max(nameTest, 1, 4);
+		String[] expected = {"Ebrahim"};
+		assertArrayEquals(expected, nameTest);
 	}
 }
