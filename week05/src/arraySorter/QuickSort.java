@@ -10,10 +10,20 @@ import java.util.Comparator;
  */
 public class QuickSort<T extends Comparable<? super T>> extends ArraySortTool<T> {
 	public void sort(T[] array) {
+		sort(array,0,array.length-1);
+	}
+	
+	private void sort(T[] array,int from,int to) {
+		if (from >= to) return;
+		int pivotIndex = from;
+		T pivot = array[pivotIndex];
+		int highIndex = to;
+		int lowIndex = pivotIndex;
+		
+		
 		for (int i = 0; i < array.length; i++) {
 			if (i == 0) {
-				T pivot = null;
-				array[0] = pivot;
+				array[0] = pivotIndex;
 			}
 		}
     }
