@@ -1,11 +1,6 @@
 package arraySorter;
 
-import java.util.Arrays;
-
-import org.junit.Test;
-
-import RandomArray.RandomArray;
-import RandomArray.RandomIntegerArray;
+import RandomArray.*;
 
 public class QuickSortTest extends SortTester<Integer>{
 	private QuickSort<Integer> sorter = new QuickSort<Integer>();
@@ -54,15 +49,5 @@ public class QuickSortTest extends SortTester<Integer>{
     public void test10000()
     {
         super.test(sorter,generator,10000);
-    }
-    
-    @Test
-    public void arrayTest() {
-	    QuickSort firstsort = new QuickSort();
-
-	    Integer[] arr = {3,4,1,5};
-	    System.out.println(Arrays.toString(arr));
-	    firstsort.sort(arr);
-	    System.out.println(Arrays.toString(arr));
     }
 }

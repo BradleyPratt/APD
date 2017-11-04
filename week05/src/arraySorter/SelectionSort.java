@@ -1,7 +1,5 @@
 package arraySorter;
 
-import java.util.Arrays;
-
 /**
  * Selection sort class, sorts the array using selection sort
  * 
@@ -9,6 +7,9 @@ import java.util.Arrays;
  */
 public class SelectionSort<T extends Comparable<? super T>> extends ArraySortTool<T> {
 	
+	/**
+	 * Method for the SelectionSort
+	 */
 	public void sort(T[] array) {
     	for (int i = 0; i < array.length; i++) {
     		int minIndex = i;
@@ -23,15 +24,5 @@ public class SelectionSort<T extends Comparable<? super T>> extends ArraySortToo
     			array[minIndex] = temp;
     		}
 		}
-	}
-
-
-public static void main(String[] args){
-    SelectionSort sort = new SelectionSort();
-
-    Integer[] arr = {3,4,1,5};
-    System.out.println(Arrays.toString(arr));
-    sort.sort(arr);
-    System.out.println(Arrays.toString(arr));
 	}
 }
