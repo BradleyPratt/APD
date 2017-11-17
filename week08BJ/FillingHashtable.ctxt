@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.params=size
+comment0.target=FillingHashtable(int)
+comment1.params=noOfElements\ keyGenerator\ valueGenerator
+comment1.target=void\ fill(int,\ RandomGenerator,\ RandomGenerator)
+comment1.text=\r\n\ Populate\ the\ hashtable\ with\ randomly\ generated\ key,\ value\ pairs.\r\n\ @param\ noOfElements\ the\ number\ of\ elements\ to\ be\ added\ to\ the\ hashtable.\r\n\ @param\ keyGenerator\ a\ random\ generator\ for\ generating\ objects\ of\ the\ key\ type.\r\n\ @param\ valueGenerator\ a\ random\ generator\ for\ generating\ objects\ of\ the\ value\ type.\r\n
+numComments=2

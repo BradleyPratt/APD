@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=length\ permissibleCharacters
+comment0.target=RandomString(int,\ char[])
+comment0.text=\r\n\ @param\ length\ the\ length\ of\ the\ strings\ to\ be\ generated\r\n\ @param\ permissibleCharacters\ the\ characters\ the\ random\ strings\ are\ to\ be\ generated\ from\r\n
+comment1.params=length
+comment1.target=RandomString(int)
+comment2.params=permissibleCharacters
+comment2.target=RandomString(char[])
+comment3.params=
+comment3.target=RandomString()
+comment4.params=length
+comment4.target=void\ setLength(int)
+comment4.text=\r\n\ Set\ the\ length\ of\ the\ strings\ to\ be\ generated\r\n\ @param\ length\ the\ length\ of\ the\ strings\ to\ be\ generated\r\n
+comment5.params=
+comment5.target=char[]\ defaultPermissibleCharacters()
+comment5.text=\r\n\ Create\ an\ array\ of\ permissible\ characters.\ \ These\ are\r\n\ '0'-'9',\ 'a'-'z',\ 'A'-'Z'\ and\ '_'\ (in\ total\ 63\ characters)\r\n
+comment6.params=
+comment6.target=java.lang.String\ generate()
+comment6.text=\r\n\ Generates\ a\ random\ string\ the\ set\ length\ \r\n\ @returns\ a\ random\ String\ of\ the\ given\ length\r\n
+numComments=7

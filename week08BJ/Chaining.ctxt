@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=size
+comment0.target=Chaining(int)
+comment0.text=\r\n\ Construct\ an\ new\ hashtable\ with\ the\ specified\ initial\ size\r\n\ @param\ size\ the\ initial\ size\ of\ the\ hashtable\r\n
+numComments=1

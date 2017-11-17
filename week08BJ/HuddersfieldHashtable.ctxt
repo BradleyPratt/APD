@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=key\ data
+comment0.target=void\ insert(java.lang.Object,\ java.lang.Object)
+comment0.text=\ This\ method\ should\ store\ the\ given\ data\ in\ the\ array\ at\ the\ position\ given\ by\ the\ \r\n\ \ key's\ hash\ code\ (taken\ modulo\ the\ table's\ size).\r\n\ \ @param\ key\ the\ key\ to\ be\ used\ to\ access\ the\ hash\ table\r\n\ \ @param\ data\ the\ data\ to\ be\ inserted\r\n\ \ @throws\ HashtableError\ if\ the\ table\ is\ full\r\n
+comment1.params=key
+comment1.target=java.lang.Object\ retrieve(java.lang.Object)
+comment1.text=\r\n\ This\ method\ should\ retrieve\ a\ value\ from\ a\ hash\ table\r\n\ @param\ key\ the\ key\ to\ be\ used\ to\ retrieve\ the\ object\r\n\ @returns\ the\ object\ specified\ by\ the\ key\ (if\ present\ in\ the\ table)\r\n\ @throws\ HashtableError\ if\ no\ object\ with\ that\ key\ is\ present\ in\ the\ table\r\n
+numComments=2

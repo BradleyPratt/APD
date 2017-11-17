@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.params=from\ to
+comment0.target=RandomInteger(int,\ int)
+comment0.text=\r\n\ @param\ from\ the\ lowest\ value\ that\ should\ be\ generated\r\n\ @param\ to\ the\ highest\ value\ that\ should\ be\ generated\r\n
+comment1.params=from
+comment1.target=RandomInteger(int)
+comment2.params=
+comment2.target=RandomInteger()
+comment3.params=from\ to
+comment3.target=void\ setRange(int,\ int)
+comment3.text=\r\n\ Set\ the\ range\ of\ numbers\ to\ be\ generated\r\n\ @throw\ RandomGenerator.Error\ if\ the\ bottom\ of\ the\ range\ is\ higher\r\n\ than\ the\ top\r\n
+comment4.params=
+comment4.target=java.lang.Integer\ generate()
+comment4.text=\r\n\ Generate\ a\ random\ integer\ in\ the\ specified\ range\r\n\ @return\ a\ random\ integer\ between\ from\ and\ to\ (inclusive)\r\n
+numComments=5

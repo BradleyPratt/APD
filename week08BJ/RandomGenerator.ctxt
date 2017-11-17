@@ -1,0 +1,5 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.lang.Object\ generate()
+comment0.text=\r\n\ Generate\ and\ return\ a\ random\ value\r\n\ @returns\ a\ random\ value\ of\ type\ T\r\n
+numComments=1
