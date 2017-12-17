@@ -6,16 +6,20 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 import java.util.Map.Entry;
 
 public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements TopologicalSort<T> {	
 	private HashMap<T,Integer> refCountTable = new HashMap<T,Integer>();
-	private ArrayList<T> sort = new ArrayList<T>();
+	private Stack<T> sort = new Stack<T>();
+	private List<T> visited = new ArrayList<T>();
 	
 	@Override
 	public List<T> getSort() throws GraphError {
 		setUpRefCounts();
 		sort();
+		
+		
 		return sort;
 	}
 
@@ -26,10 +30,14 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 
 	private void countReferences() throws GraphError {
 		for (T node: getNodes()) {
-			for (T neighbour: getNeighbours(node)) {
+			/*for (T neighbour: getNeighbours(node)) {
 				int currentCount = refCountTable.get(neighbour);
+				currentCount++;
 				refCountTable.put(neighbour, currentCount);
-			}
+			}*/
+			int currentCount = getNeighbours(node).size();
+			System.out.println(currentCount);
+			refCountTable.put(node, currentCount);
 		}
 	}
 
@@ -40,20 +48,64 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 	}
 	
 	private void sort() throws GraphError {
-		T node;
+		/*T node;
 
         while ((node = nextReferenceZeroNode()) != null) {
-        	System.out.println(node);
              for (T neighbour: getNeighbours(node)) {
                  Integer count = refCountTable.get(neighbour);
-                 if (count != null) {
-                     refCountTable.put(neighbour, count--);
+                 if (count == 0) {
+                     refCountTable.put(neighbour, count++);
+        	         //sort.add(node);
                  }
-                 refCountTable.put(node, count);
+                 refCountTable.put(node, count--);
+    	         sort.add(node);
+
              }
 	         refCountTable.remove(node);
-	         sort.add(node);
-        }
+        }*/
+		while (!refCountTable.isEmpty()) {
+			for (T node: getNodes()) {
+				if (!visited.contains(node)) {
+					visitNode(node);
+				}
+				
+				//Integer count = getNeighbours(node).size();
+				//refCountTable.put(node, count--);
+				//refCountTable.remove(node);
+				/*if (count == 0) {
+					refCountTable.put(node, count++);
+				} 
+				refCountTable.put(node, count--);
+		        refCountTable.remove(node);
+				sort.add(node);*/
+			}
+			//sort.add(refCountTable.);
+		}
+	}
+	
+	private void visitNode(T node) throws GraphError {
+		if (visited.contains(node)) {
+			return;
+		}
+		visited.add(node);
+		/*for (T neighbour: getNeighbours(node)) {
+			int currentCount = refCountTable.get(neighbour);
+			refCountTable.put(neighbour, currentCount--);
+			visitNode(neighbour);
+		}*/
+		while ((node = nextReferenceZeroNode()) != null) {
+			//for (T neighbour: getNeighbours(node)) {
+				//T neighbour = getNeighbours();
+				int currentCount = refCountTable.get(node);
+				//System.out.println(currentCount);
+				refCountTable.put(node, currentCount--);
+				visitNode(node);
+			//}
+			//refCountTable.remove(node);
+
+		}
+		//refCountTable.remove(node);
+		sort.push(node);
 	}
 	
     private T nextReferenceZeroNode(){
