@@ -44,7 +44,7 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 	}
 	
 	private void sort() throws GraphError {
-		//T node;
+		T node;
 
 		/*while ((node = nextReferenceZeroNode()) != null) {
 			System.out.println(node); 
@@ -55,8 +55,8 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 			refCountTable.remove(node);
 			sort.add(node);
 			}*/
-		while (!refCountTable.isEmpty()) {
-			for (T node: getNodes()) {
+		while ((node = nextReferenceZeroNode()) != null) {
+			//for (T node: getNodes()) {
 				if (!visited.contains(node)) {
 					visitNode(node);
 				}
@@ -70,7 +70,7 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 				refCountTable.put(node, count-1);
 		        refCountTable.remove(node);
 				sort.add(node);*/
-			}
+			//}
 			//sort.add(refCountTable.);
 		}
 	}
