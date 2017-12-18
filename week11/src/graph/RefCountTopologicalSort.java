@@ -30,14 +30,10 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 
 	private void countReferences() throws GraphError {
 		for (T node: getNodes()) {
-			/*for (T neighbour: getNeighbours(node)) {
+			for (T neighbour: getNeighbours(node)) {
 				int currentCount = refCountTable.get(neighbour);
-				currentCount++;
-				refCountTable.put(neighbour, currentCount);
-			}*/
-			int currentCount = getNeighbours(node).size();
-			System.out.println(currentCount);
-			refCountTable.put(node, currentCount);
+				refCountTable.put(neighbour, ++currentCount);  
+			}
 		}
 	}
 
@@ -48,21 +44,17 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 	}
 	
 	private void sort() throws GraphError {
-		/*T node;
+		//T node;
 
-        while ((node = nextReferenceZeroNode()) != null) {
-             for (T neighbour: getNeighbours(node)) {
-                 Integer count = refCountTable.get(neighbour);
-                 if (count == 0) {
-                     refCountTable.put(neighbour, count++);
-        	         //sort.add(node);
-                 }
-                 refCountTable.put(node, count--);
-    	         sort.add(node);
-
-             }
-	         refCountTable.remove(node);
-        }*/
+		/*while ((node = nextReferenceZeroNode()) != null) {
+			System.out.println(node); 
+			for (T neighbour: getNeighbours(node)) {
+				Integer count = refCountTable.get(neighbour);
+				refCountTable.put(neighbour, count-1); 
+			}
+			refCountTable.remove(node);
+			sort.add(node);
+			}*/
 		while (!refCountTable.isEmpty()) {
 			for (T node: getNodes()) {
 				if (!visited.contains(node)) {
@@ -70,12 +62,12 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 				}
 				
 				//Integer count = getNeighbours(node).size();
-				//refCountTable.put(node, count--);
+				//refCountTable.put(node, count-1);
 				//refCountTable.remove(node);
 				/*if (count == 0) {
 					refCountTable.put(node, count++);
 				} 
-				refCountTable.put(node, count--);
+				refCountTable.put(node, count-1);
 		        refCountTable.remove(node);
 				sort.add(node);*/
 			}
@@ -88,23 +80,27 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 			return;
 		}
 		visited.add(node);
-		/*for (T neighbour: getNeighbours(node)) {
-			int currentCount = refCountTable.get(neighbour);
-			refCountTable.put(neighbour, currentCount--);
+		for (T neighbour: getNeighbours(node)) {
+			System.out.println(getNeighbours(neighbour));
+			if (refCountTable.get(neighbour) != null) {
+				int currentCount = refCountTable.get(neighbour);
+				System.out.println(currentCount);
+				refCountTable.put(neighbour, currentCount-1);
+			}
 			visitNode(neighbour);
-		}*/
-		while ((node = nextReferenceZeroNode()) != null) {
+		}
+		/*while ((node = nextReferenceZeroNode()) != null) {
 			//for (T neighbour: getNeighbours(node)) {
 				//T neighbour = getNeighbours();
 				int currentCount = refCountTable.get(node);
 				//System.out.println(currentCount);
-				refCountTable.put(node, currentCount--);
+				refCountTable.put(node, currentCount-1);
 				visitNode(node);
 			//}
 			//refCountTable.remove(node);
 
-		}
-		//refCountTable.remove(node);
+		}*/
+		refCountTable.remove(node);
 		sort.push(node);
 	}
 	
