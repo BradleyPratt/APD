@@ -129,16 +129,14 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
         graph.add(node3);
         graph.add(node4);
         graph.add(node5);
-        graph.add(node6);
-        graph.add(node7);
+        graph.add(0, 1);
         graph.add(0, 3);
-        graph.add(0, 4);
-        graph.add(1, 4);
+        graph.add(1, 2);
+        graph.add(2, 1);
+        graph.add(2, 4);
         graph.add(2, 5);
-        graph.add(3, 6);
-        graph.add(4, 6);
-        graph.add(5, 7);
-        graph.add(6, 7);
+        graph.add(4, 5);
+        graph.add(5, 4);
 
         graph.getSort();   
         System.out.println("Reference Count Topological Sort: "+Arrays.toString((graph.sort.toArray())));

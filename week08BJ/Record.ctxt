@@ -1,8 +1,10 @@
 #BlueJ class context
-comment0.params=key\ value
-comment0.target=Record(java.lang.Object,\ java.lang.Object)
-comment1.params=
-comment1.target=java.lang.Object\ getKey()
+comment0.target=Record
+comment0.text=\r\n\ Models\ an\ entry\ in\ a\ hash\ table.\r\n\ @author\ Hugh\ Osborne\r\n\ @version\ November\ 2013\r\n
+comment1.params=key\ value
+comment1.target=Record(java.lang.Object,\ java.lang.Object)
 comment2.params=
-comment2.target=java.lang.Object\ getValue()
-numComments=3
+comment2.target=java.lang.Object\ getKey()
+comment3.params=
+comment3.target=java.lang.Object\ getValue()
+numComments=4

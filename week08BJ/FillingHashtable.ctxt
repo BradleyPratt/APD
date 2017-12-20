@@ -1,7 +1,9 @@
 #BlueJ class context
-comment0.params=size
-comment0.target=FillingHashtable(int)
-comment1.params=noOfElements\ keyGenerator\ valueGenerator
-comment1.target=void\ fill(int,\ RandomGenerator,\ RandomGenerator)
-comment1.text=\r\n\ Populate\ the\ hashtable\ with\ randomly\ generated\ key,\ value\ pairs.\r\n\ @param\ noOfElements\ the\ number\ of\ elements\ to\ be\ added\ to\ the\ hashtable.\r\n\ @param\ keyGenerator\ a\ random\ generator\ for\ generating\ objects\ of\ the\ key\ type.\r\n\ @param\ valueGenerator\ a\ random\ generator\ for\ generating\ objects\ of\ the\ value\ type.\r\n
-numComments=2
+comment0.target=FillingHashtable
+comment0.text=\r\n\ Hashtables\ that\ can\ be\ populated\ by\ random\ elements.\r\n\ \r\n\ @author\ Hugh\ Osborne\r\n\ @version\ October\ 2011\r\n
+comment1.params=size
+comment1.target=FillingHashtable(int)
+comment2.params=noOfElements\ keyGenerator\ valueGenerator
+comment2.target=void\ fill(int,\ RandomGenerator,\ RandomGenerator)
+comment2.text=\r\n\ Populate\ the\ hashtable\ with\ randomly\ generated\ key,\ value\ pairs.\r\n\ @param\ noOfElements\ the\ number\ of\ elements\ to\ be\ added\ to\ the\ hashtable.\r\n\ @param\ keyGenerator\ a\ random\ generator\ for\ generating\ objects\ of\ the\ key\ type.\r\n\ @param\ valueGenerator\ a\ random\ generator\ for\ generating\ objects\ of\ the\ value\ type.\r\n
+numComments=3

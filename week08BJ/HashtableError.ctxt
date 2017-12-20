@@ -1,6 +1,8 @@
 #BlueJ class context
-comment0.params=
-comment0.target=HashtableError()
-comment1.params=message
-comment1.target=HashtableError(java.lang.String)
-numComments=2
+comment0.target=HashtableError
+comment0.text=\r\n\ Simple\ error\ reporting\ for\ hashtables\r\n\ \r\n\ @author\ Hugh\ Osborne\r\n\ @version\ November\ 2013\r\n
+comment1.params=
+comment1.target=HashtableError()
+comment2.params=message
+comment2.target=HashtableError(java.lang.String)
+numComments=3
