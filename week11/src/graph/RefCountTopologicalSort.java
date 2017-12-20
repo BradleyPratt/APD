@@ -41,9 +41,13 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
 		}
 	}
 	
+	/**
+	 * Sorts the graph by decrementing the count of each neighbour node
+	 * @throws GraphError
+	 */
 	private void sort() throws GraphError {		
 		T node; // Declare the node as a variable
-
+	
 		while ((node = nextReferenceZeroNode()) != null) { // Check the nodes next reference  and continue the loop whilst it isn't null
 			for (T neighbour: getNeighbours(node)) { // Check the neighbours of the node
 				Integer count = refCountTable.get(neighbour); // Get the amount of neighbours from the refCountTable

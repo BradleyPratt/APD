@@ -3,40 +3,47 @@ package linkedList;
 public class SinglyLinkedList<T> implements List<T> {
 	private Node<T> head = null;
 	private Node<T> tail = null;
+	private int noOfNodes = 0;
 	
 	@Override
 	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return (head == null);
+		return (head == null); // Checks if empty by seeing if there is a head
 	}
 
 	@Override
 	public void add(int index, T value) throws ListAccessError {
-		Node<T> nd = new Node<T>(value);
-        //nd.setValue(value);
-        System.out.println("Adding: "+value);
-        /**
-         * check if the list is empty
-         */
-        if(head == null){
-            head = nd;
-            tail = nd;
-        } else {
-            tail.setNextRef(nd);
-            tail = nd;
-        }		
+	    Node<T> addNode = new Node<T>(value); //Defines the value as a new "addNode"
+	    if (isEmpty()) { //If the list is empty it adds it at the head
+	      head = addNode;
+	      tail = head;
+	    } else {
+	    	Node<T> node = head;
+	    	for (int i = 0; i < index-1; i++) { //Traverse through each node but -1 to set next later
+	    		node = node.getNext(); 
+	    	}
+	    	node.setNext(addNode); //Continuation of the -1 so the next position can be set
+	    	node = addNode; //Sets the node to addNode from the beginning 
+	    }
+	    noOfNodes++;
 	}
 
 	@Override
 	public T remove(int index) throws ListAccessError {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public T get(int index) throws ListAccessError {
-		// TODO Auto-generated method stub
-		return null;
+		return getNode(index).getValue();
 	}
-
+    private Node<T> getNode(int index) throws ListAccessError {
+    	if (index < 0 || index >= noOfNodes) { // invalid index
+    		throw new ListAccessError("Index out of bounds");
+    	}
+    	Node<T> node = head; // start at head of list
+    	for (int i = 0; i < index; i++) { // walk through list to desired index
+    		node = node.getNext(); // by following next references
+    	}
+    	return node; // return the node at the required index
+    }
 }
