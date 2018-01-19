@@ -38,4 +38,10 @@ public class CountTest {
 		countSet.runSet();
 	}
 
+	@Test
+	public void test_0_10_and_10_0() throws InterruptedException {
+		countSet.add(new Counter(0,10));
+		countSet.add(new Counter(10,0));
+		countSet.runSet();
+	}
 }

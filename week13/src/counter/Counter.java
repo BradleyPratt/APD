@@ -30,7 +30,7 @@ public class Counter extends Thread
     /**
      * The counter is shared between all instances of Counter.
      **/
-    private static int counter;
+    private int counter;
     
     /**
      * @param name    the name of this counter
