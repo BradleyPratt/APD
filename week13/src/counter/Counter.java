@@ -258,4 +258,11 @@ public class Counter extends Thread
         if (tracingOn && finished) System.out.println(getName() + " has finished: " + counter);
         return finished;
     }
+    
+    public void run() {
+    	startCount();
+    	while(!isFinished()) {
+    		stepCount();
+    	}
+    }
 }
