@@ -22,9 +22,12 @@ public class Peru extends Railway {
      */
     public void runTrain() throws RailwaySystemError {
     	Clock clock = getRailwaySystem().getClock();
+    	Basket basket = getBasket();
     	while (!clock.timeOut()) {
-    		choochoo();
-    		crossPass();
+    		if(!basket.hasStone(this)) {	
+	    		choochoo();
+	    		crossPass();
+    		}
     	}
     }
 }

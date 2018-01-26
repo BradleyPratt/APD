@@ -6,6 +6,7 @@ import tools.Clock;
 import tools.Delay;
 
 public class Bolivia extends Railway {
+	private Basket basket; // private basket
 	/**
 	 * @throws RailwaySystemError if there is an error in constructing the delay
 	 * Change the parameters of the Delay constructor in the call of the superconstructor to
@@ -22,9 +23,12 @@ public class Bolivia extends Railway {
      */
     public void runTrain() throws RailwaySystemError {
     	Clock clock = getRailwaySystem().getClock();
+    	Basket basket = getBasket();
     	while (!clock.timeOut()) {
-    		choochoo();
-    		crossPass();
+    		if(!basket.hasStone(this)) {	
+	    		choochoo();
+	    		crossPass();
+    		}
     	}
     }
 }

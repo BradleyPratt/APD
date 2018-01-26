@@ -153,9 +153,7 @@ public abstract class Railway extends Thread {
 		while (trainsInPass >= 1) {
 			siesta();
 		}
-		if (basket.hasStone(this)) {
-			enterPass();
-		}
+		enterPass();
 		if (trainsInPass > 1) {
 			throw new SafetyViolationError("There are now " + trainsInPass + " trains in the pass!");
 		}
