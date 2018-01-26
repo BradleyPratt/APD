@@ -150,9 +150,9 @@ public abstract class Railway extends Thread {
 	 * @throws SafetyViolationError if there is/are already train(s) on the pass.
 	 */
 	public void crossPass() throws RailwaySystemError {
-		while (trainsInPass >= 1) {
+		//while (trainsInPass >= 1) {
 			siesta();
-		}
+		//}
 		enterPass();
 		if (trainsInPass > 1) {
 			throw new SafetyViolationError("There are now " + trainsInPass + " trains in the pass!");
