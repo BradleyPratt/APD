@@ -24,13 +24,13 @@ public class Peru extends Railway {
     	Clock clock = getRailwaySystem().getClock();
     	Basket basket = getBasket();
     	Railway nextRailway = getRailwaySystem().getNextRailway(this);
-    	while (!clock.timeOut()) {
+    	while (!clock.timeOut()) { // Whilst the clock is ticking
 			choochoo();
-    		basket.putStone(this);
-    		while (nextRailway.getBasket().hasStone(this)) {
-	    		if(basket.hasStone(this) == nextRailway.getBasket().hasStone(this)) {	
+    		basket.putStone(this); // Place a stone in this railway systems basket
+    		while (nextRailway.getBasket().hasStone(this)) { // While the next railway system has a stone in its basket
+	    		if(basket.hasStone(this) == nextRailway.getBasket().hasStone(this)) { // If this has stone or doesnt or the other railway has stone or doesnt
 		    		basket.takeStone(this);
-		    		while(nextRailway.getBasket().hasStone(this) != basket.hasStone(this)) {
+		    		while(nextRailway.getBasket().hasStone(this) != basket.hasStone(this)) { // While the next railways basket is not equal to this railways basket
 		    			siesta();
 		    		}
 		    		basket.putStone(this);
