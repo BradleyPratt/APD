@@ -85,8 +85,8 @@ public class Buffer<T>
     public T get() throws BufferError, SemaphoreLimitError {
         T item;
         try {
-            criticalSection.poll();   // is the buffer available?
             noOfElements.poll(); // is there at least one data item in the buffer?
+            criticalSection.poll();   // is the buffer available?
             item = getItem(); // add the data item
             criticalSection.vote();   // make the buffer available again
             noOfSpaces.vote();  // there is now one more space in the buffer
