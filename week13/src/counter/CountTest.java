@@ -31,12 +31,12 @@ public class CountTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
+	/*@Test
 	public void test_5_10_and_5_0() throws InterruptedException {
 		countSet.add(new Counter(5,10));
 		countSet.add(new Counter(5,0));
 		countSet.runSet();
-	}
+	}*/
 
 	@Test
 	public void test_0_10_and_10_0() throws InterruptedException {
