@@ -67,8 +67,8 @@ public class Buffer<T>
      */
     public void put(T item) throws BufferError, SemaphoreLimitError {
         try {
-            noOfSpaces.poll();  // is there space in the buffer?
             criticalSection.poll();   // is the buffer available?
+            noOfSpaces.poll();  // is there space in the buffer?
             putItem(item);    // add the data item
             criticalSection.vote();   // make the buffer available again
             noOfElements.vote(); // there is now one more element in the buffer
