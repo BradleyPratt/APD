@@ -32,7 +32,7 @@ public class ResourceSystem
      * be lower - see BasicResourceManager)
      */
     public void addResource(String name,int maxUseages) {
-        managers.add(new ResourceManager(new Resource(name),maxUseages));
+        managers.add(new LockResourceManager(new Resource(name),maxUseages));
     }
     
     /**
