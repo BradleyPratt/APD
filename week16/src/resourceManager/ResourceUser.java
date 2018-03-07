@@ -86,7 +86,9 @@ public class ResourceUser extends Thread
                     manager.requestResource(priority); // request the resource - the resource manager should suspend this resource user if the resource is not available
                     System.out.println(this + " gained access to " + manager.getResourceName()); // request successfull - resource available
                     manager.useResource(timeRequired); // use the resource
+                    System.out.println("Time Required: " + timeRequired);
                     int newThreadsPriority = manager.releaseResource(); // release the resource - the request returns the priority of the process, if any, woken by this request
+                    System.out.println("New Priority: " + newThreadsPriority);
                     if (newThreadsPriority == BasicResourceManager.NONE_WAITING) {
                         System.out.println(this + " released " + manager.getResourceName() + ", there were no waiting processes");
                     } else {
