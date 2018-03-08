@@ -4,16 +4,14 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class LockResourceManager extends BasicResourceManager {
-	
-	
+public class LockResourceManager extends BasicResourceManager {	
     final Lock lock = new ReentrantLock();
     final Condition[] conditions = new Condition[NO_OF_PRIORITIES];
     final Condition using  = lock.newCondition(); 
     final Condition notUsing = lock.newCondition();
 
     boolean resourceInUse = false;
-	static int highestPriority;
+	//static int highestPriority;
 
 	public LockResourceManager(Resource resource, int maxUseages) {
 		super(resource, maxUseages);
@@ -23,30 +21,35 @@ public class LockResourceManager extends BasicResourceManager {
         }
 	}
 
-	public synchronized void requestResource(int priority) {
-		lock.lock();
-						
-		try {
-			increaseNumberWaiting(priority);
+	public void requestResource(int priority) throws ResourceError {
+		increaseNumberWaiting(priority);
 
+		lock.lock();
+		
+		//thisPriority = priority;
+		
+		try {
 			if (resourceInUse) {
-				System.out.println("HighestPriority = " + highestPriority);
 				/*if(conditions[priority] != null) {
 					conditions[priority].await();
 				}
 				conditions[priority] = lock.newCondition();*/
 				//notUsing.signal();
-			}
+				//notUsing.signal();
+				//conditions[priority] = lock.newCondition();
+				//conditions[priority] = lock.newCondition();
+				conditions[priority].await();
+				}
 						
-			for (int i = 0; i < NO_OF_PRIORITIES; i++ ) {
+			/*for (int i = 0; i < NO_OF_PRIORITIES; i++ ) {
 				if (getNumberWaiting(i) > 0) {
 					highestPriority = i;
 				}
-			}
+			}*/
 			
-			if (priority < highestPriority) {
+			/*if (priority < highestPriority) {
 				conditions[priority].await();
-			} 
+			}*/ 
 			resourceInUse = true;
 			//using.await();
 
@@ -57,33 +60,63 @@ public class LockResourceManager extends BasicResourceManager {
 		}
 	}
 
-	public synchronized int releaseResource() {
+	public int releaseResource() throws ResourceError {
 		/*try {
 			notUsing.await();
-			using.signal();
+			//using.signal();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+		int highestPriority = 0;
+		int returnValue = 0;
 		
 		lock.lock();
-		System.out.println("ran");
 
 		try {
-			for (int i = 11; i < conditions.length; i--) {
-				System.out.println(i);
+			//decreaseNumberWaiting(thisPriority);
+			/*for (int i = 0; i < getNumberWaiting(thisPriority); i++) {
+				//System.out.println("i = " + i);
 
-				if(getNumberWaiting(i) != 0) {
-					decreaseNumberWaiting(i);
+				if(getNumberWaiting(thisPriority) != 0) {
+					decreaseNumberWaiting(thisPriority);
 					//conditions[i].signal();
-					System.out.println(i);
+					//System.out.println(i);
+					conditions[thisPriority].signal();
 					
 					resourceInUse = false;
-									
-					return i;
+					
+					return getNumberWaiting(thisPriority);
 				}
+			}*/
+			
+			for (int i = 0; i <= 10; i++) {
+				//System.out.println(i);
+				if(getNumberWaiting(i) > 0) {
+					highestPriority = i;
+					System.out.println("HighestPriority = " + highestPriority + " Num of waiting = " + getNumberWaiting(i));
+				}
+				
+				/*if (i == 10) {
+					//conditions[highestPriority].signal();
+					conditions[highestPriority].signal();
+					return highestPriority;
+				}*/
 			}
+		
+			if (highestPriority >= 0) {
+				resourceInUse = false;
+				
+				decreaseNumberWaiting(highestPriority);
+				
+				conditions[highestPriority].signal();
+								
+				return highestPriority;
+			}
+			
+			//decreaseNumberWaiting(thisPriority);
 			resourceInUse = false;
+			conditions[highestPriority].signal();
 
 			return NONE_WAITING;
 		} finally {
