@@ -11,24 +11,28 @@ public class LockResourceManager extends BasicResourceManager {
     final Condition notUsing = lock.newCondition();
 
     boolean resourceInUse = false;
-
+    
 	public LockResourceManager(Resource resource, int maxUseages) {
 		super(resource, maxUseages);
 		
+		// Define the locks for each possible priority
         for (int priority = 0; priority < NO_OF_PRIORITIES; priority++) {
         	conditions[priority] = lock.newCondition();
         }
 	}
 
+	// Request resource method ran by the resource user class
 	public void requestResource(int priority) throws ResourceError {
-		increaseNumberWaiting(priority);
-
+		// Locks the method to one process
 		lock.lock();
 				
 		try {
-			if (resourceInUse) {
+			if (resourceInUse) {	
+				// Increases the number of processes waiting for this priority
+				increaseNumberWaiting(priority);
 				conditions[priority].await();
 			}
+		// Sets the resource in use boolean to true until set to false once the resource has been used
 		resourceInUse = true;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -38,32 +42,27 @@ public class LockResourceManager extends BasicResourceManager {
 	}
 
 	public int releaseResource() throws ResourceError {
-		int highestPriority = 0;
+		int highestPriority = -1;
 		
 		lock.lock();
 
 		try {	
-			for (int i = 0; i <= 10; i++) {
+			// For loop which goes through each priority to find the highest priority waiting
+			for (int i = 0; i < NO_OF_PRIORITIES; i++) {
 				if(getNumberWaiting(i) > 0) {
 					highestPriority = i;
-					System.out.println("HighestPriority = " + highestPriority + " Num of waiting = " + getNumberWaiting(i));
 				}
-			}
-		
-			if (highestPriority >= 0) {
-				decreaseNumberWaiting(highestPriority);
-
-				resourceInUse = false;
-								
-				conditions[highestPriority].signal();
-								
-				return highestPriority;
 			}
 			
 			resourceInUse = false;
-			conditions[highestPriority].signal();
 
-			return NONE_WAITING;
+			if (highestPriority == -1) {
+				return NONE_WAITING;
+			} else {
+				decreaseNumberWaiting(highestPriority); // Decreases the number of processes waiting with the highest priority
+				conditions[highestPriority].signal();	// Signals the process with the highest priority waiting to run	
+				return highestPriority; 
+			}
 		} finally {
 			lock.unlock();
 		}
