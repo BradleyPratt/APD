@@ -34,7 +34,7 @@ public class QuickSort<T extends Comparable<? super T>> extends ArraySortTool<T>
 
             } while (lowIndex <= highIndex); //Runs the do while this is true
 
-            sort(array, from, highIndex);//Reruns the do-while loop with the new pivot
+            sort(array, from, highIndex); //Reruns the do-while loop with the new pivot
             sort(array, lowIndex, to);
 		}
     }
