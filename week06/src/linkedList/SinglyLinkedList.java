@@ -29,7 +29,27 @@ public class SinglyLinkedList<T> implements List<T> {
 
 	@Override
 	public T remove(int index) throws ListAccessError {
-		return null;
+    	Node<T> node = head;
+    	Node<T> temp = getNode(index);
+    	//Node<T> previousNode = null;
+    	
+	    //Node<T> removeNode = new Node<T>(value); //Defines the value as a new "addNode"
+	    if (isEmpty()) { //If the list is empty it adds it at the head
+	    	return null;
+	    } else {
+	    	if (index < 0 || index >= noOfNodes) { // invalid index
+	    		throw new ListAccessError("Index out of bounds");
+	    	}
+	    	for (int i = 0; i < index-1; i++) { //Traverse through each node but -1 to set next later
+		    	node.getNext(); //Continuation of the -1 so the next position can be set
+	    		//aheadNode = node.getNext();
+	    		//previousNode = getNode(i-1);
+	    	}
+	    	node.setNext(temp);
+	    	//node = addNode; //Sets the node to addNode from the beginning 
+	    }
+	    noOfNodes--;	
+	    return node.getValue();
 	}
 
 	@Override

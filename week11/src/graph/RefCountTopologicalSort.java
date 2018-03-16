@@ -106,6 +106,6 @@ public class RefCountTopologicalSort<T> extends AdjacencyGraph<T> implements Top
         graph.add(9, 4);
 
         graph.getSort();   
-        System.out.println("Reference Count Topological Sort: "+Arrays.toString((graph.sort.toArray())));
+        System.out.println("Reference Count Topological Sort: "+Arrays.toString(graph.sort.toArray()));
     }
 }

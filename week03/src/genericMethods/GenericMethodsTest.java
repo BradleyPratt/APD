@@ -56,8 +56,6 @@ public class GenericMethodsTest {
 	@Test
 	public void testMax() {
 		String[] nameTest = {"Hugh", "Andrew", "Ebrahim","Diane","Paula", "Simon"};
-		GenericMethods.max(nameTest, 1, 4);
-		String[] expected = {"Ebrahim"};
-		assertArrayEquals(expected, nameTest);
+		assertEquals("Ebrahim",GenericMethods.max(nameTest, 0, 5));
 	}
 }

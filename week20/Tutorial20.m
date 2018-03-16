@@ -22,7 +22,7 @@ Uf = @(n,m) [~n,n,0,0;n,~n,0,0;0,0,~m,m;0,0,m,~m];
 
 Deutsch = @(n,m) kron(Hadamard,Identity)*Uf(n,m)*kron(Hadamard,Hadamard);
 
-%ZERO * Hadamard = 0.7071
+%Hadamard * ZERO = 0.7071
 %Hadamard * 0.7071 = 1 or 0
 
 %The results with ONE are the same
