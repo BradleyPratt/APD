@@ -149,7 +149,7 @@ public class SinglyLinkedListTest {
 	public void testRemoveSingleton() throws ListAccessError {
 		SinglyLinkedList<Integer> list = new SinglyLinkedList<Integer>();
 		list.add(0, 5);
-		assertEquals(new Integer(5),list.remove(5));
+		assertEquals(new Integer(5),list.remove(0));
 	}
 
 	@Test
@@ -179,7 +179,8 @@ public class SinglyLinkedListTest {
 		list.add(3, -6);
 		list.add(4, 0);
 		list.add(5,42);
-		assertEquals(new Integer(-6),list.remove(3));
+		list.remove(3);
+		assertEquals(new Integer(42),list.get(4));
 	}
 
 	@Test
@@ -203,7 +204,10 @@ public class SinglyLinkedListTest {
 		list.add(3, -6);
 		list.add(4, 0);
 		list.add(5,42);
-		assertEquals(new Integer(42),list.remove(5));
+		list.remove(5);
+		thrown.expect(ListAccessError.class);
+		thrown.expectMessage("Index out of bounds");
+		list.get(5);
 	}
 
 	@Test
