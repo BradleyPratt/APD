@@ -2,7 +2,6 @@ package linkedList;
 
 public class SinglyLinkedList<T> implements List<T> {
 	private Node<T> head = null;
-	private Node<T> tail = null;
 	private int noOfNodes = 0;
 	
 	@Override
@@ -15,7 +14,6 @@ public class SinglyLinkedList<T> implements List<T> {
 	    Node<T> addNode = new Node<T>(value); //Defines the value as a new "addNode"
 	    if (isEmpty()) { //If the list is empty it adds it at the head
 	      head = addNode;
-	      tail = head;
 	    } else {
 	    	Node<T> node = head;
 	    	for (int i = 0; i < index-1; i++) { //Traverse through each node but -1 to set next later
@@ -31,9 +29,7 @@ public class SinglyLinkedList<T> implements List<T> {
 	public T remove(int index) throws ListAccessError {
     	Node<T> node = head;
     	Node<T> temp = getNode(index);
-    	//Node<T> previousNode = null;
     	
-	    //Node<T> removeNode = new Node<T>(value); //Defines the value as a new "addNode"
 	    if (isEmpty()) { //If the list is empty it adds it at the head
 	    	throw new ListAccessError("Index out of bounds");
 	    } else {
@@ -44,7 +40,6 @@ public class SinglyLinkedList<T> implements List<T> {
 		    	node = node.getNext(); //Continuation of the -1 so the next position can be set
 	    	}
 	    	node.setNext(temp.getNext());
-	    	//node = addNode; //Sets the node to addNode from the beginning 
 	    }
 	    noOfNodes--;	
 	    return node.getValue();

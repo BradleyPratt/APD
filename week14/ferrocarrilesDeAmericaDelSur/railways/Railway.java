@@ -11,6 +11,8 @@ import tools.Delay;
  *
  */
 public abstract class Railway extends Thread {
+	int test = 0;
+	
 	private String name; // the name of the railway
 	private static Basket sharedBasket = new Basket("shared basket"); // a shared basket for notifications
 	private Basket basket; // private basket
@@ -151,8 +153,10 @@ public abstract class Railway extends Thread {
 	 */
 	public void crossPass() throws RailwaySystemError {
 		//while (trainsInPass >= 1) {
-			siesta();
+			//siesta();
 		//}
+		test++;
+		System.out.println(test);
 		enterPass();
 		if (trainsInPass > 1) {
 			throw new SafetyViolationError("There are now " + trainsInPass + " trains in the pass!");
