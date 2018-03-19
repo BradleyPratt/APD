@@ -20,23 +20,24 @@ public class Peru extends Railway {
      * This method provides (incorrect) synchronisation attempting to avoid more than one train in the 
      * pass at any one time.
      */
-    public void runTrain() throws RailwaySystemError {
+	public void runTrain() throws RailwaySystemError {
     	Clock clock = getRailwaySystem().getClock();
     	Basket basket = getBasket();
     	Railway nextRailway = getRailwaySystem().getNextRailway(this);
     	while (!clock.timeOut()) { // Whilst the clock is ticking
-		choochoo();
+    		choochoo();
     		basket.putStone(this); // Place a stone in this railway systems basket
     		while (nextRailway.getBasket().hasStone(this)) { // While the next railway system has a stone in its basket
-	    		if(basket.hasStone(this) == nextRailway.getBasket().hasStone(this)) { // If this has stone or doesnt or the other railway has stone or doesnt
+	    		if(getSharedBasket().hasStone(this)) { // If this has stone or doesnt or the other railway has stone or doesnt
 		    		basket.takeStone(this);
-		    		while(nextRailway.getBasket().hasStone(this) != basket.hasStone(this)) { // While the next railways basket is not equal to this railways basket
+		    		while(getSharedBasket().hasStone(this)) { // While the shared basket doesnt have the stone
 		    			siesta();
 		    		}
 		    		basket.putStone(this);
 	    		}
     		}
     		crossPass();
+    		getSharedBasket().putStone(this);
     		basket.takeStone(this);
     	}
     }
