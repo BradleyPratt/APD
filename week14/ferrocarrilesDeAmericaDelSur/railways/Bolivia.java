@@ -6,6 +6,8 @@ import tools.Clock;
 import tools.Delay;
 
 public class Bolivia extends Railway {
+	private static boolean[] procReqCS = {false,false} ;
+
 	/**
 	 * @throws RailwaySystemError if there is an error in constructing the delay
 	 * Change the parameters of the Delay constructor in the call of the superconstructor to
@@ -24,10 +26,15 @@ public class Bolivia extends Railway {
     	Clock clock = getRailwaySystem().getClock();
     	Basket basket = getBasket();
     	Railway nextRailway = getRailwaySystem().getNextRailway(this);
+    	
+    	int id = 0;
+    	
     	while (!clock.timeOut()) {
 			choochoo();
     		basket.putStone(this);
-    		while (nextRailway.getBasket().hasStone(this)) {
+    		procReqCS[id] = basket.hasStone(this);
+
+    		while (procReqCS[(id+1) % 2]) {
 	    		if(basket.hasStone(this) == nextRailway.getBasket().hasStone(this)) {	
 		    		basket.takeStone(this);
 		    		while(nextRailway.getBasket().hasStone(this) != basket.hasStone(this)) {
